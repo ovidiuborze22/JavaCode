@@ -1,2 +1,3 @@
 # JavaCode
-Java Trainig
+
+Java Training
