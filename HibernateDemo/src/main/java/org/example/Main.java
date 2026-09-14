@@ -15,6 +15,7 @@ public class Main {
         s1.setsName("Robert");
         s1.setsAge(23);
 
+        Student s2 = null;
 
         SessionFactory sf = new Configuration()
                 .configure()
@@ -22,14 +23,11 @@ public class Main {
                 .buildSessionFactory();
 
         Session session = sf.openSession();
-        Transaction transaction = session.beginTransaction();
+        s2 = session.find(Student.class, 102);
 
-        session.persist(s1);
-
-
-        transaction.commit();
         session.close();
         sf.close();
-        System.out.println(s1);
+        System.out.println(s2);
+
     }
 }
