@@ -11,11 +11,15 @@ public class Main {
         Student s1 = new Student();
 
 
-        s1.setRollNo(106);
-        s1.setsName("Robert");
-        s1.setsAge(23);
+//        s1.setRollNo(103);
+//        s1.setsName("Harsh");
+//        s1.setsAge(24);
 
-        Student s2 = null;
+        s1.setRollNo(107);
+        s1.setsName("Arthur");
+        s1.setsAge(29);
+
+//        Student s2 = null;
 
         SessionFactory sf = new Configuration()
                 .configure()
@@ -23,11 +27,14 @@ public class Main {
                 .buildSessionFactory();
 
         Session session = sf.openSession();
-        s2 = session.find(Student.class, 102);
-
+        s1 = session.find(Student.class, 107);
+        Transaction transaction = session.beginTransaction();
+//        session.merge(s1); // update
+        session.remove(s1); // remove
+        transaction.commit();
         session.close();
         sf.close();
-        System.out.println(s2);
+        System.out.println(s1);
 
     }
 }
