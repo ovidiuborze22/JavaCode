@@ -9,9 +9,9 @@ public class Main {
     public static void main(String[] args) {
 
         Student s1 = new Student();
-        s1.setRollNo(101);
-        s1.setsName("John");
-        s1.setsAge(30);
+        s1.setRollNo(105);
+        s1.setsName("Vanya");
+        s1.setsAge(22);
         Configuration cfg = new Configuration();
         cfg.addAnnotatedClass(org.example.Student.class);
         cfg.configure("hibernate.cfg.xml");
