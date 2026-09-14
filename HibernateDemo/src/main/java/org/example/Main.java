@@ -9,20 +9,27 @@ public class Main {
     public static void main(String[] args) {
 
         Student s1 = new Student();
-        s1.setRollNo(105);
-        s1.setsName("Vanya");
-        s1.setsAge(22);
-        Configuration cfg = new Configuration();
-        cfg.addAnnotatedClass(org.example.Student.class);
-        cfg.configure("hibernate.cfg.xml");
-        SessionFactory sf = cfg.buildSessionFactory();
+
+
+        s1.setRollNo(106);
+        s1.setsName("Robert");
+        s1.setsAge(23);
+
+
+        SessionFactory sf = new Configuration()
+                .configure()
+                .addAnnotatedClass(org.example.Student.class)
+                .buildSessionFactory();
+
         Session session = sf.openSession();
         Transaction transaction = session.beginTransaction();
 
         session.persist(s1);
 
+
         transaction.commit();
+        session.close();
+        sf.close();
         System.out.println(s1);
     }
-
 }
