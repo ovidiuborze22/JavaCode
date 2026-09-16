@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import java.util.*;
 
 @Entity
+@Cacheable
 public class Laptop {
 
     @Id
