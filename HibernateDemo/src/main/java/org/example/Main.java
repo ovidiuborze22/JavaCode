@@ -36,19 +36,8 @@ public class Main {
         a2.setAname("Mara");
         a2.setTech("Python");
 
-        Alien a3 = new Alien();
-        a3.setAid(103);
-        a3.setAname("Bob");
-        a3.setTech("AI");
-
         a1.setLaptops(Arrays.asList(l1, l2));
-        a2.setLaptops(Arrays.asList(l2, l3));
-        a3.setLaptops(Arrays.asList(l1));
-
-
-        l1.setAliens(Arrays.asList(a1, a3));
-        l2.setAliens(Arrays.asList(a1, a2));
-        l3.setAliens(Arrays.asList(a2));
+        a2.setLaptops(Arrays.asList(l3));
 
         SessionFactory sf = new Configuration()
                 .configure()
@@ -65,7 +54,6 @@ public class Main {
 
         session.persist(a1);
         session.persist(a2);
-        session.persist(a3);
 
         transaction.commit();
 
@@ -73,8 +61,8 @@ public class Main {
 
         Session session1 = sf.openSession();
 
-        Alien a5 = session1.find(Alien.class, 102);
-        System.out.println(a5);
+        Alien a5 = session1.find(Alien.class, 101);
+//        System.out.println(a5);
         session1.close();
         sf.close();
 
